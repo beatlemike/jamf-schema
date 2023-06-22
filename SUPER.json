@@ -1,0 +1,314 @@
+{
+  "title": "SUPERMAN (com.macjutsu.super)",
+  "description": "Preference settings for the S.U.P.E.R.M.A.N updating script",
+  "properties": {
+    "JamfProID": {
+      "title": "JamfProID: The ID of the JAMF Pro Server",
+      "description": "This is required if using the JAMF API & Bootstrap token to provide authentication to the softwareupdate mechanism on Apple Silicon Macs.",
+      "property_order": 1,
+      "type": "string",
+      "options": {
+        "enum_titles": [
+          "$JSSID"
+        ]
+      },
+      "enum": [
+        "$JSSID"
+      ]
+    },
+    "DefaultDefer": {
+      "title": "DefaultDefer: Default defer amount in seconds",
+      "description": "The number of seconds to defer until the next update attempt if a user choses not to update restart. This deferral time is also used in cases when a required service is temporarily unavailable (for example, network or Jamf Pro connectivity issues). Using this option overrides the default deferral time which is set to 3600 seconds (1 hour) via the $defaultDeferSECONDS parameter. Times less than 120 seconds or more than 86400 seconds (1 day) are rounded accordingly. Also see the --menu option to display a pop-up menu allowing the user to select an alternate deferral time. Finally, use a value of X to return this option to its default.",
+      "property_order": 2,
+      "type": "string"
+    },
+    "FocusDefer": {
+      "title": "FocusDefer: Default defer amount in seconds for Focus or Do Not Disturb mode",
+      "description": "The number of seconds to defer the update restart dialog automatically if a process has prevented display sleep (for example, during an active meeting) or the user has Focus or Do Not Disturb enabled. With this option you should also consider using --focus-deadline and --soft-deadline to ensure users are offered a chance to defer before a required update restart is enforced via --hard-deadline. Times less than 120 seconds or more than 86400 seconds (1 day) are rounded accordingly. Finally, use a value of X to disable this option.",
+      "property_order": 3,
+      "type": "string"
+    },
+    "MenuDefer": {
+      "title": "MenuDefer: Deferral options to show in the drop down menu",
+      "description": "Example (7200,14800,86400) Display a deferral time pop-up menu in the non-deadline update restart dialog that allows the user to overide the --default-defer time. The time selections are specified with one or more number of seconds that are comma separated with no spaces. The first number in the list is the default selection for the menu, thus it will be automatically selected if you also set --display-timeout. Times less than 120 seconds or more than 86400 seconds (1 day) are rounded accordingly. Finally, use a value of X to disable this option.",
+      "property_order": 4,
+      "type": "string"
+    },
+    "RecheckDefer": {
+      "title": "RecheckDefer: The number of seconds to defer if no software updates are found",
+      "description": "The number of seconds to defer if no software updates are found. Enabling this option results in super acting as a permanent agent that checks for software updates on a regular basis. Logically, this option can not be used along with the --skip-updates option. Times less than 120 seconds or more than 2628288 seconds (30 days) are rounded accordingly. Finally, use a seconds value of X to disable this option.",
+      "property_order": 5,
+      "type": "string"
+    },
+    "ErrorDefer": {
+      "title": "ErrorDefer: The number of seconds to defer deferral time specifically for errors",
+      "description": "This option allows you to set a deferral time specifically for errors (as opposed to using the default defer time).",
+      "property_order": 6,
+      "type": "string"
+    },
+    "FocusCount": {
+      "title": "FocusCount: The maximum number of automatic deferrals allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting).",
+      "description": "The maximum number of automatic deferrals allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear as normal. With this option you should also consider setting a specific --focus-defer time, otherwise the focus deferment time is based on the --default-defer time. Note that if a user is always in a Focus mode, the --focus-count deadline must pass first before the --soft-count or --hard-count options are started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum focus count deadline. Finally, use a number value of X to disable this option.",
+      "property_order": 7,
+      "type": "string"
+    },
+    "SoftCount": {
+      "title": "SoftCount: The maximum number of user selected deferrals allowed before the soft deadline dialog.",
+      "description": "The maximum number of user selected deferrals allowed before the soft deadline dialog. The soft deadline is an interactive update restart dialog indicating that no more deferrals are allowed. This option can not be used along with the --hard-count option as logically there can only be one behavior after passing the maximum number of user deferrals. Note that if this option is also used with the --focus-count option and the user is always in a Focus mode, then the --focus-count deadline must pas first before the --soft-count is started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum soft count deadline. Finally, use a number value of X to disable this option.",
+      "property_order": 8,
+      "type": "string"
+    },
+    "HardCount": {
+      "title": "HardCount: The maximum number of user selected deferrals allowed before the computer automatically restarts for updates without asking the user for approval.",
+      "description": "The maximum number of user selected deferrals allowed before the computer automatically restarts for updates without asking the user for approval. However, the user is notified that a restart is pending. This option can not be used along with the --soft-count option as logicially there can only be one behavior after passing the maximum number of user deferrals. Note that if this option is also used with the --focus-count option and the user is always in a Focus mode, then the --focus-count deadline must pas first before the --hard-count is started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum hard count deadline. Finally, use a number value of X to disable this option.",
+      "property_order": 9,
+      "type": "string"
+    },
+    "FocusDays": {
+      "title": "FocusDays: The maximum number of days that automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting).",
+      "description": "The maximum number of days that automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear. With this option you should also consider setting a specific --focus-defer time, otherwise the focus deferment time is be based on the --default-defer time. Note that when used along with the --soft-days or --hard-days options, logically the --focus-days value must always be the least number of days. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --zero-day option to' simulate being past the maximum number of days deadline. Finally, use a days value of X to disable this option.",
+      "property_order": 10,
+      "type": "string"
+    },
+    "SoftDays": {
+      "title": "SoftDays: The maximum number of days allowed before the soft deadline dialog.",
+      "description": "The maximum number of days allowed before the soft deadline dialog. The soft deadline is an interactive update restart dialog indicating that no more deferrals are allowed. Note that when used along with the --focus-days or --hard-days options, logically the --soft-days value must always be more than the --focus-days value and less than the --hard-days value. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --zero-day option to simulate being past the maximum number of days deadline. Finally, use a days value of X to disable this option.",
+      "property_order": 11,
+      "type": "string"
+    },
+    "HardDays": {
+      "title": "HardDays: The maximum number of days allowed before the computer automatically restarts for updates without asking the user for approval.",
+      "description": "The maximum number of days allowed before the computer automatically restarts for updates without asking the user for approval. However, the user is notified that a restart is pending. Note that when used along with the --focus-days or --soft-days options, logically the --hard-days value must always be the most number of days. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --zero-day option to simulate being past the maximum number of days deadline. Finally, use a days value of X to disable this option.",
+      "property_order": 12,
+      "type": "string"
+    },
+    "ZeroDay": {
+      "title": "ZeroDay: The maximum number of days allowed before the computer automatically restarts for updates without asking the user for approval.",
+      "description": "Example (YYYY-MM-DD:hh:mm) Instead of having the days deadline counter automatically select the day zero date, this option sets a specific date and time as day zero. Note that you need to manually update this value every time you want to set a new day zero. Finally, use a date value of X to disable this option.",
+      "property_order": 13,
+      "type": "string"
+    },
+    "FocusDate": {
+      "title": "FocusDate: This is the last date and time when automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep.",
+      "description": "Example (YYYY-MM-DD:hh:mm) This is the last date and time when automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Also see the $dateFORMAT and $timeFORMAT parameters for date display options. Note that when used along with the --soft-date or --hard-date options, the --focus-date value must always be the earliest in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline. Finally, use a date value of X to disable this option.",
+      "property_order": 14,
+      "type": "string"
+    },
+    "SoftDate": {
+      "title": "SoftDate: If this date and time have passed, an interactive update restart dialog appears indicating that no more user deferrals are allowed.",
+      "description": "Example (YYYY-MM-DD:hh:mm) If this date and time have passed, an interactive update restart dialog appears indicating that no more user deferrals are allowed. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Also see the $dateFORMAT and $timeFORMAT parameters for date display options. Note that when used along with the --focus-date or --hard-date options, the --soft-date value must always be after the --focus-date in time but before the --hard-date in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline. Finally, use a date value of X to disable this option.",
+      "property_order": 15,
+      "type": "string"
+    },
+    "HardDate": {
+      "title": "HardDate: If this date has passed, the computer restarts and updates without asking the user for approval.",
+      "description": "Example (YYYY-MM-DD:hh:mm) If this date has passed, the computer restarts and updates without asking the user for approval. However, the user is notified that a restart is pending. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Also see the $dateFORMAT and $timeFORMAT parameters for date display options. Note that when used along with the --focus-date or --soft-date options, the --hard-date value must always be the latest in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline. Finally, use a date value of X to disable this option.",
+      "property_order": 16,
+      "type": "string"
+    },
+    "DeferDialogTimeout": {
+      "title": "DeferDialogTimeout: Countdown timeout for update notifications in seconds",
+      "description": "Allows you to set a timeout (in seconds) for the restart or defer dialog (default is no timeout). If the user doesn't make a selection to restart or defer within this timeout then the workflow automatically defers.",
+      "property_order": 17,
+      "type": "string"
+    },
+    "SoftDialogTimeout": {
+      "title": "SoftDialogTimeout: Countdown timeout for update notifications in seconds",
+      "description": "Allows you to set a timeout (in seconds) for the soft deadline restart dialog (default is no timeout). If the user doesn't choose to restart within this timeout then the workflow automatically starts the macOS update/upgrade restart.",
+      "property_order": 18,
+      "type": "string"
+    },
+    "DisplayRedraw": {
+      "title": "DisplayRedraw: Seconds to wait before reprompting if notification closed or moved offscreen",
+      "description": "If a user ignores a notification or dialog (for example, it's moved offscreen) this specifies the number of seconds to wait before closing and then reopening the notification or dialog, thus redrawing the notification or dialog back in it's original open possition. Avoid low numbers as re-centering results in a \"flash\" of the notification or dialog. Also note that when --display-redraw is used along with --display-timeout, timeout seconds that are too low are automatically corrected to equal three times the redraw seconds. This results in the notification or dialog redrawing twice before the timeout automatically selects the \"Restart\" button. Finally, use a value of X to disable this option.",
+      "property_order": 19,
+      "type": "string"
+    },
+    "DisplayIcon": {
+      "title": "DisplayIcon: Path to Icon to display in notifications",
+      "description": "Example (/Library/Application Support/icon.icns) Local path or http(s) URL to a file that is the picture to display in notifications or dialogs. Use a value of X to = return this option to its default.",
+      "property_order": 20,
+      "type": "string"
+    },
+    "IconSizeIbm": {
+      "title": "IconSizeIbm: Icon Size in Pixels",
+      "description": "Example (512) Number of pixels for the --display-icon in IBM Notifier dialogs. Using this option overrides the default IBM Notifier icon size which is set to 96 pixels via the $ibmNotifierIconSIZE parameter. Any size less than 32 pixles or more than 150 pixles is rounded accordingly. Finally, use a value of X to return this option to its default.",
+      "property_order": 21,
+      "type": "string"
+    },
+    "IconSizeJamf": {
+      "title": "IconSizeJamf: Icon Size in Pixels if using the JAMF notifier",
+      "description": "Example (512) Number of pixels for the --display-icon in jamfHelper dialogs and notifications. Using this option overrides the default jamfHelper icon size which is set to 96 pixels via the $jamfHelperIconSIZE parameter. Any size less than 32 pixles or more than 256 pixles is rounded accordingly. Finally, use a value of X to return this option to its default.",
+      "property_order": 22,
+      "type": "string"
+    },
+    "PreferJamfHelper": {
+      "title": "PreferJamfHelper: Prefer the JAMF notifier instead of IBM Notifier app",
+      "description": "Prefer jamfHelpler over IBM Notifier.app for user interactions.",
+      "property_order": 23,
+      "type": "boolean"
+    },
+    "PolicyTriggers": {
+      "title": "PolicyTriggers: JAMF triggers to run",
+      "description": "Example (slack,chromeinstall,policy1) One or more Jamf Pro Policy Triggers that are comma separated with no spaces. If a restart is required for system updates or forced via --force-restart, this list of Jamf Policy Triggers runs before any available updates install and the computer restarts. This option can also be used along with the --skip-updates option to run only the Jamf Policy Triggers. Finally, use a value of X to disable this option.",
+      "property_order": 24,
+      "type": "string"
+    },
+    "SkipUpdates": {
+      "title": "SkipUpdates: Skip installing updates and only run jamf policies",
+      "description": "Skip Apple software updates, even if they are available. This option can also be used along with --force-restart and --jamf-policies to only run Jamf Pro Polices and then restart the computer while still taking advantage of notifications, dialogs, deferrals, and deadline options. Alternatley, use this option along with --reset-super to clear any super preferences, kill any existing super processes and delete the super LaunchDaemon.",
+      "property_order": 25,
+      "type": "boolean"
+    },
+    "RestartWithoutUpdates": {
+      "title": "RestartWithoutUpdates: Force restart even if software updates don't require it",
+      "description": "Force a restart even if Apple software updates do not need it. Useful when used along with --test-mode or if no updates are available but you still want to use --jamf-policies and then restart.",
+      "property_order": 26,
+      "type": "boolean"
+    },
+    "TestMode": {
+      "title": "TestMode: Testing mode",
+      "description": "Mode to validate parameters, credentials, notifications, dialogs, deferrals, and deadline logic. This mode does not attempt any Apple software updates, Jamf Polices, or restarts. Thus, allowing for quick iteration testing.",
+      "property_order": 27,
+      "type": "boolean"
+    },
+    "TestModeTimeout": {
+      "title": "TestModeTimeout: Testing mode timeout in seconds",
+      "description": "Example (30) The amount of time in seconds to leave test notifications and dialogs open before moving on in the workflow. Using this option overrides the default test mode timeout which is set to 10 seconds via the \\$testModeTIMEOUT default parameter. Finally, use a value of X to return this option to its default.",
+      "property_order": 28,
+      "type": "string"
+    },
+    "VerboseMode": {
+      "title": "VerboseMode: Verbose Mode",
+      "description": "Mode to generate additional log output. Note that with this mode passwords are visible in Terminal but are not saved to \\$superLOG.",
+      "property_order": 29,
+      "type": "boolean"
+    },
+    "AllowRSRUpdates": {
+      "title": "AllowRSRUpdates: Allow RSR Updates",
+      "description": "This option must be specified to install RSR updates, otherwise the default super behavior is to not install RSR updates.",
+      "property_order": 30,
+      "type": "boolean"
+    },
+    "AllowUpgrade": {
+      "title": "AllowUpgrade: Allow Upgrade",
+      "description": "This option can automatically enforce all contemporary macOS upgrade workflows from macOS 10.14 (older macOS versions may work but are not tested) to macOS 13.X. This includes support for Intel, Apple Silicon via local authentication, Apple Silicon via Jamf Pro API authentication, and Apple Silicon user request (similar to Nudge).",
+      "property_order": 31,
+      "type": "boolean"
+    },
+    "TargetUpgrade": {
+      "title": "TargetUpgrade: Target Upgrade Version",
+      "description": "This option allows you to specify a major macOS version (11, 12, or 13) as the maximum allowed macOS upgrade.",
+      "property_order": 32,
+      "type": "string"
+    },
+    "EnforceNonSystemUpdates": {
+      "title": "EnforceNonSystemUpdates: Enforce Non System Updates",
+      "description": "This will install all recommended (non-macOS) updates silently in the background even if there is no macOS update or upgrade required. Without using this option, the default behavior is to install recommended updates only after a macOS update/upgrade restart.",
+      "property_order": 33,
+      "type": "boolean"
+    },
+    "OnlyDownload": {
+      "title": "OnlyDownload: Only Download",
+      "description": "This workflow option allows you to pre-cache (but not install) macOS update/upgrades silently in the background. This significantly shortens the restart time when an installation workflow is started. If you use this option along with the Recheck Defer option then super always keeps the latest available macOS updates and allowed macOS upgrades ready for installation.",
+      "property_order": 34,
+      "type": "boolean"
+    },
+    "InstallNow": {
+      "title": "InstallNow: Install Now",
+      "description": "This workflow option provides full support for 'self-servicing' workflows that are started by an active user. With this option enabled the macOS update/upgrade workflow starts immediately.",
+      "property_order": 35,
+      "type": "boolean"
+    },
+    "FreeSpaceUpdate": {
+      "title": "FreeSpaceUpdate: Free Space Update",
+      "description": "This option allow you to override the default available free space requirements (in GB). These options should be reserved for testing purposes only as the default available free space requirements are set to reasonable minimums.",
+      "property_order": 36,
+      "type": "string"
+    },
+    "FreeSpaceUpgrade": {
+      "title": "FreeSpaceUpgrade: Free Space Upgrade",
+      "description": "This option allow you to override the default available free space requirements (in GB). These options should be reserved for testing purposes only as the default available free space requirements are set to reasonable minimums.",
+      "property_order": 37,
+      "type": "string"
+    },
+    "FreeSpaceTimeout": {
+      "title": "FreeSpaceTimeout: Free Space Timeout",
+      "description": "This option allows you to set a timeout (in seconds) for the required available free space notification (default is one hour). If the minimum available free space requirement is not met within this timeout then the workflow automatically defers.",
+      "property_order": 38,
+      "type": "string"
+    },
+    "BatteryLevel": {
+      "title": "BatteryLevel: Battery Level",
+      "description": "This option allows you to override the default battery level (percentage) requirement. This option should be reserved for testing purposes only as the default battery level requirement is set to a reasonable minimum.",
+      "property_order": 39,
+      "type": "string"
+    },
+    "BatteryTimeout": {
+      "title": "BatteryTimeout: Battery Timeout",
+      "description": "This option allows you to set a timeout (in seconds) for the AC power required notification (default is one hour). If AC power is not connected within this timeout then the workflow automatically defers.",
+      "property_order": 40,
+      "type": "string"
+    },
+    "DisplayAccessoryType": {
+      "title": "DisplayAccessoryType: Display Accessory Type",
+      "description": "This option (TEXTBOX, HTMLBOX, HTML, IMAGE, VIDEO, VIDEOAUTO) allows you to specify a custom display accessory view for IBM Notifier interactive dialogs. Must be used with DisplayAccessoryContent.",
+      "property_order": 41,
+      "type": "string"
+    },
+    "DisplayAccessoryDefault": {
+      "title": "DisplayAccessoryDefault: Display Accessory Default",
+      "description": "This shows the display accessory content for all macOS updates and upgrades. This option can accept a local path or a web URL. If the specified local path or URL can not be found then the custom display accessory will not be shown. Must be used with DisplayAccessoryType.",
+      "property_order": 42,
+      "type": "string"
+    },
+    "DisplayAccessoryUserAuth": {
+      "title": "DisplayAccessoryUserAuth: Display Accessory User Auth",
+      "description": "This shows the display accessory content for only macOS updates. This option can accept a local path or a web URL. If the specified local path or URL can not be found then the custom display accessory will not be shown. Must be used with DisplayAccessoryType.",
+      "property_order": 43,
+      "type": "string"
+    },
+    "DisplayAccessoryUpdate": {
+      "title": "DisplayAccessoryUpdate: Display Accessory Update",
+      "description": "This shows the display accessory content for only macOS updates. This option can accept a local path or a web URL. If the specified local path or URL can not be found then the custom display accessory will not be shown. Must be used with DisplayAccessoryType.",
+      "property_order": 44,
+      "type": "string"
+    },
+    "DisplayAccessoryUpgrade": {
+      "title": "DisplayAccessoryUpgrade: Display Accessory Upgrade",
+      "description": "This shows the display accessory content for only macOS upgrades. This option can accept a local path or a web URL. If the specified local path or URL can not be found then the custom display accessory will not be shown. Must be used with DisplayAccessoryType.",
+      "property_order": 45,
+      "type": "string"
+    },
+    "HelpButton": {
+      "title": "HelpButton: Help Button",
+      "description": "This option allows you to specify a help button (ex: https://support.apple.com/en-us/HT201541) for IBM Notifier interactive dialogs (jamfHelper dialogs do not support this option).",
+      "property_order": 46,
+      "type": "string"
+    },
+    "WarningButton": {
+      "title": "WarningButton: Warning Button",
+      "description": "This option allows you to specify a warning button (ex: https://support.apple.com/en-us/HT201222) for IBM Notifier interactive dialogs (jamfHelper dialogs do not support this option).",
+      "property_order": 47,
+      "type": "string"
+    },
+    "DisplaySilently": {
+      "title": "DisplaySilently: Display Silently",
+      "description": "This option will open all IBM Notifier dialogs and notifications without playing the system warning sound (jamfHelper dialogs and notifications do not support this option).",
+      "property_order": 48,
+      "type": "boolean"
+    },
+    "UserAuthTimeout": {
+      "title": "UserAuthTimeout: User Authentication Timeout",
+      "description": "This option allows you to set a timeout (in seconds) for the macOS update/upgrade via user authentication dialog (default is no timeout). If the user doesn't authenticate the macOS update/upgrade within this timeout then the workflow exits.",
+      "property_order": 49,
+      "type": "string"
+    },
+    "UserAuthMDMFailover": {
+      "title": "UserAuthMDMFailover: User Authentication MDM Failover",
+      "description": "This option (ALWAYS, HARD, SOFT, DEADLINE, INSTALLNOW, BOOTSTRAP, NOSERVICE) allows you to specify when the macOS update/upgrade via user authentication workflow should be used as a failover for when the macOS update/upgrade via MDM workflow fails.",
+      "property_order": 50,
+      "type": "string"
+    }
+  }
+}

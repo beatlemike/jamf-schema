@@ -1,0 +1,24 @@
+{
+  "title": "com.apple.applicationaccess",
+  "description": "AirDrop",
+  "properties": {
+    "allowAirDrop": {
+      "type": "boolean",
+      "title": "Allow Air Drop",
+      "description": "If false, disables AirDrop. Requires a supervised device.",
+      "property_order": 5
+    },
+    "allowPasswordSharing": {
+      "type": "boolean",
+      "title": "Allow Password Sharing",
+      "description": "If set to false, users can not share their passwords with the Airdrop Passwords feature.",
+      "property_order": 10
+    },
+    "allowPasswordProximityRequests": {
+      "type": "boolean",
+      "title": "Allow Proximity Based Password Sharing Requests",
+      "description": "If false, disables requesting passwords from nearby devices.",
+      "property_order": 10
+    }
+  }
+}

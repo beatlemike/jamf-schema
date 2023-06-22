@@ -1,0 +1,42 @@
+{
+  "title": "SystemUI Server (com.apple.systemuiserver)",
+  "description": "SystemUI Server settings",
+  "properties": {
+    "menuExtras": {
+      "type": "array",
+      "title": "Menu Extras",
+      "items": {
+        "type": "string",
+        "title": "Menu Extras",
+        "enum": [
+          "/System/Library/CoreServices/Menu Extras/AirPort.menu",
+          "/System/Library/CoreServices/Menu Extras/DwellControl.menu",
+          "/System/Library/CoreServices/Menu Extras/Eject.menu",
+          "/System/Library/CoreServices/Menu Extras/ExpressCard.menu",
+          "/System/Library/CoreServices/Menu Extras/PPP.menu",
+          "/System/Library/CoreServices/Menu Extras/PPPoE.menu",
+          "/System/Library/CoreServices/Menu Extras/SafeEjectGPUExtra.menu",
+          "/System/Library/CoreServices/Menu Extras/TimeMachine.menu",
+          "/System/Library/CoreServices/Menu Extras/VPN.menu",
+          "/System/Library/CoreServices/Menu Extras/WWAN.menu"
+        ],
+        "options": {
+          "enum_titles": [
+            "Airport",
+            "Dwell",
+            "Eject",
+            "Express Card",
+            "PPP",
+            "PPPoE",
+            "Safe Eject GPU",
+            "Time Machine",
+            "VPN",
+            "WWAN"
+          ]
+        },
+        "description": "List of menu extras to combine with the user's menu bar",
+        "property_order": 5
+      }
+    }
+  }
+}

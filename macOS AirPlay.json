@@ -1,0 +1,12 @@
+{
+  "title": "com.apple.applicationaccess",
+  "description": "AirPlay",
+  "properties": {
+    "allowAirPlayIncomingRequests": {
+      "type": "boolean",
+      "title": "allowAirPlayIncomingRequests",
+      "description": "If false, disables incoming AirPlay requests.",
+      "property_order": 5
+    }
+  }
+}

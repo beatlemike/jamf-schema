@@ -1,0 +1,12 @@
+{
+  "title": "System Policy: Managed (com.apple.systempolicy.managed)",
+  "description": "System Policy: Managed settings",
+  "properties": {
+    "DisableOverride": {
+      "type": "boolean",
+      "title": "Disable Override",
+      "description": "If True, disables the contextual menu override of Gatekeeper.",
+      "property_order": 5
+    }
+  }
+}

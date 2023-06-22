@@ -1,0 +1,12 @@
+{
+  "title": "com.apple.terminal",
+  "description": "com.apple.terminal",
+  "properties": {
+    "SecureKeyboardEntry": {
+      "type": "boolean",
+      "title": "Secure Keyboard Entry Terminal",
+      "description": "If set to true, Enabling Secure Keyboard Entry minimizes the risk of a key logger from detecting what is entered in Terminal.",
+      "property_order": 5
+    }
+  }
+}

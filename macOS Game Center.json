@@ -1,0 +1,12 @@
+{
+  "title": "com.apple.gamed",
+  "description": "macOS Game Center",
+  "properties": {
+    "GKFeatureAccountModificationAllowed": {
+      "type": "boolean",
+      "title": "Game Center Account Modification Allowed",
+      "description": "If true, allows Game Center account modifications.",
+      "property_order": 5
+    }
+  }
+}

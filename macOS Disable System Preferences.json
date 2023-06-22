@@ -1,0 +1,27 @@
+{
+  "title": "macOS Disabled System Preferences Panes (com.apple.systempreferences)",
+  "description": "Disables System Preferences panes that may not yet be included in the Jamf Pro macOS Restrictions payload in a configuration profile.",
+  "__feedback": "bill@talkingmoose.net",
+  "properties": {
+    "DisabledPreferencePanes": {
+      "title": "Disabled System Preference Panes",
+      "description": "Disables System Preferences panes by providing their identifiers.",
+      "property_order": 5,
+      "type": "array",
+      "default": "com.apple.preference.battery",
+      "items": {
+        "type": "string",
+        "title": "System Preferences pane identifier"
+      },
+      "options": {
+        "infoText": "Key name: DisabledPreferencePanes"
+      },
+      "links": [
+        {
+          "rel": "More information",
+          "href": "Undocumented"
+        }
+      ]
+    }
+  }
+}

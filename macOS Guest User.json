@@ -1,0 +1,18 @@
+{
+  "title": "com.apple.MCX",
+  "description": "macOS Guest User",
+  "properties": {
+    "DisableGuestAccount": {
+      "type": "boolean",
+      "title": "Disable Guest Account",
+      "description": "If true, disables the guest account. This property has no effect if EnableGuestAccount is true.",
+      "property_order": 5
+    },
+    "EnableGuestAccount": {
+      "type": "boolean",
+      "title": "Enable Guest Account",
+      "description": "If true, enables the guest account.",
+      "property_order": 10
+    }
+  }
+}

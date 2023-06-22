@@ -1,0 +1,16 @@
+{
+  "title": "com.apple.loginwindow",
+  "description": "Login Window",
+  "properties": {
+    "HiddenUsersList": {
+      "type": "array",
+      "title": "Hidden Users List",
+      "description": "",
+      "property_order": 5,
+      "items": {
+        "type": "string",
+        "title": "Entries"
+      }
+    }
+  }
+}

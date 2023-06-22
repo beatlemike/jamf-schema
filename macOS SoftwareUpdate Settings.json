@@ -1,0 +1,54 @@
+{
+  "title": "com.apple.SoftwareUpdate",
+  "description": "macOS SoftwareUpdate Settings",
+  "properties": {
+    "AutomaticallyInstallMacOSUpdates": {
+      "type": "boolean",
+      "title": "Automatically Install MacOS Updates",
+      "description": "If false, restricts the \"Install macOS Updates\" option and prevents the user from changing the option.",
+      "property_order": 5
+    },
+    "AllowPreReleaseInstallation": {
+      "type": "boolean",
+      "title": "Allow PreRelease Installation",
+      "description": "If true, prerelease software can be installed on this computer. ",
+      "property_order": 10
+    },
+    "AutomaticallyInstallAppUpdates": {
+      "type": "boolean",
+      "title": "Automatically Install App Updates",
+      "description": "If false, deselects the \"Install app updates from the App Store\" option and prevents the user from changing the option.",
+      "property_order": 15
+    },
+    "AutomaticCheckEnabled": {
+      "type": "boolean",
+      "title": "Automatic Check Enabled",
+      "description": "If false, deselects the \"Check for updates\" option and prevents the user from changing the option.",
+      "property_order": 20
+    },
+    "ConfigDataInstall": {
+      "type": "boolean",
+      "title": "Config Data Install",
+      "description": "If false, restricts the automatic installation of configuration data.",
+      "property_order": 25
+    },
+    "AutomaticDownload": {
+      "type": "boolean",
+      "title": "Automatic Download",
+      "description": "If false, deselects the \"Download new updates when available from the App Store\" option and prevents the user from changing the option.",
+      "property_order": 30
+    },
+    "restrict-software-update-require-admin-to-install": {
+      "type": "boolean",
+      "title": "restrict-software-update-require-admin-to-install",
+      "description": "If true, restrict app installations to admin users. This key has the same function as the restrict-store-require-admin-to-install key in the com.apple.appstore payload. ",
+      "property_order": 35
+    },
+    "CriticalUpdateInstall": {
+      "type": "boolean",
+      "title": "Critical Update Install",
+      "description": "If false, disables the automatic installation of critical updates and prevents the user from changing the \"Install system data files and security updates\" option.",
+      "property_order": 40
+    }
+  }
+}

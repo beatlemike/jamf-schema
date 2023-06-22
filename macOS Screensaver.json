@@ -1,0 +1,36 @@
+{
+  "title": "com.apple.screensaver",
+  "description": "macOS Screensaver",
+  "properties": {
+    "askForPassword": {
+      "type": "boolean",
+      "title": "Ask For Password",
+      "description": "If true, the user is prompted for a password when the screen saver is unlocked or stopped. When you use this prompt, you must also provide Password Delay.",
+      "property_order": 5
+    },
+    "askForPasswordDelay": {
+      "type": "integer",
+      "title": "Password Delay",
+      "description": "The number of seconds to delay before the password will be required to unlock or stop the screen saver (the grace period). A value of 2147483647 (for example, 0x7FFFFFFF) disables this requirement. To use this option, you must set Ask For Password to true.",
+      "property_order": 10
+    },
+    "moduleName": {
+      "type": "string",
+      "title": "Screensaver Module Name",
+      "description": "(Required) The name of the screen saver module.",
+      "property_order": 15
+    },
+    "loginWindowIdleTime": {
+      "type": "integer",
+      "title": "LoginWindow Screensaver idle time",
+      "description": "The number of seconds of inactivity before the screen saver activates (0 = Never activate). ",
+      "property_order": 20
+    },
+    "loginWindowModulePath": {
+      "type": "string",
+      "title": "Login Screensaver path",
+      "description": "A full path to the screen saver module to be used.",
+      "property_order": 25
+    }
+  }
+}

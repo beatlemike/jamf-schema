@@ -1,0 +1,36 @@
+{
+  "title": "com.apple.AssetCache.managed",
+  "description": "Content Caching Settings",
+  "properties": {
+    "AutoEnableTetheredCaching": {
+      "type": "boolean",
+      "title": "Auto Enable Tethered Caching",
+      "description": "Automatically enable Internet connection sharing when possible and prevent disabling Internet connection sharing.",
+      "property_order": 5
+    },
+    "DenyTetheredCaching": {
+      "type": "boolean",
+      "title": "Deny Tethered Caching",
+      "description": "If true, disables tethered caching.",
+      "property_order": 10
+    },
+    "AllowSharedCaching": {
+      "type": "boolean",
+      "title": "Allow Shared Caching",
+      "description": "If true, caches non-iCloud content, such as apps and software updates. ",
+      "property_order": 15
+    },
+    "allowContentCaching": {
+      "type": "boolean",
+      "title": "Allow Content Caching",
+      "description": "If false, disables content caching",
+      "property_order": 20
+    },
+    "AllowPersonalCaching": {
+      "type": "boolean",
+      "title": "Allow Personal Caching",
+      "description": "If true, caches the user's iCloud data.",
+      "property_order": 25
+    }
+  }
+}

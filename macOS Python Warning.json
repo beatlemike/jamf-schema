@@ -1,0 +1,12 @@
+{
+  "title": "com.apple.python",
+  "description": "Python Warning",
+  "properties": {
+    "DisablePythonAlert": {
+      "type": "boolean",
+      "title": "Disable Python Alert",
+      "description": "If true, disables Python warning for apps and scripts on macOS Monterey and higher. ",
+      "property_order": 5
+    }
+  }
+}

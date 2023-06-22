@@ -1,0 +1,12 @@
+{
+  "title": "com.apple.preference.users",
+  "description": "The payload for configuring iCloud password preferences.",
+  "properties": {
+    "DisableUsingiCloudPassword": {
+      "type": "boolean",
+      "title": "Disable Using iCloud Password",
+      "description": "If true, disables the iCloud password for local accounts.",
+      "property_order": 5
+    }
+  }
+}

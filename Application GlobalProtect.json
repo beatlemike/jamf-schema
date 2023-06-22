@@ -1,0 +1,28 @@
+{
+  "title": "Global Protect Settings (com.paloaltonetworks.GlobalProtect.client)",
+  "description": "Configures settings for Palo Alto GlobalProtect",
+  "properties": {
+    "PanPortalList": {
+      "type": "array",
+      "title": "PAN Portal Address",
+      "description": "",
+      "property_order": 5,
+      "items": {
+        "type": "string",
+        "title": "Entries"
+      }
+    },
+    "User": {
+      "type": "string",
+      "title": "User",
+      "description": "Account to be signed in.",
+      "property_order": 10
+    },
+    "Prelogon": {
+      "type": "string",
+      "title": "Prelogon",
+      "description": "0 = No Prelogon, 1 = Prelogon.",
+      "property_order": 15
+    }
+  }
+}

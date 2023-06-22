@@ -1,0 +1,48 @@
+{
+  "title": "com.apple.loginwindow",
+  "description": "macOS Login Window Options",
+  "properties": {
+    "UseComputerNameForComputerRecordName": {
+      "type": "boolean",
+      "title": "Set Computer Name To Computer Record Name",
+      "description": "If true, sets the computer name to the current record name in Jamf. This may not even allow Jamf to change the computer name after applied.",
+      "property_order": 5
+    },
+    "TALLogoutSavesState": {
+      "type": "boolean",
+      "title": "Save State On Logout",
+      "description": "If true, open windows will be reopened when logging back in. If false, they will not. Users will not be asked.",
+      "property_order": 10
+    },
+    "EnableExternalAccounts": {
+      "type": "boolean",
+      "title": "Enable External Accounts",
+      "description": "If set to true, allows external accounts other than AD accounts to login.",
+      "property_order": 15
+    },
+    "DisableFDEAutoLogin": {
+      "type": "boolean",
+      "title": "Disable Automatic Login If FileVault Is Enabled",
+      "description": "If true, disables the automatic login option when using FileVault. After entering the filevault password, the user will see the standard login screen.",
+      "property_order": 20
+    },
+    "AdminMayDisableMCX": {
+      "type": "boolean",
+      "title": "Admin May Disable Management",
+      "description": "If true, Mac computer administrators may refresh content or disable management.",
+      "property_order": 25
+    },
+    "DisableConsoleAccess": {
+      "type": "boolean",
+      "title": "Disable Console Login",
+      "description": "If true, disregards the >console special user name, which will provide a command line UI.",
+      "property_order": 30
+    },
+    "com.apple.login.mcx.DisableAutoLoginClient": {
+      "type": "boolean",
+      "title": "Disable Automatic Login",
+      "description": "If set to true, automatic login is disabled.",
+      "property_order": 35
+    }
+  }
+}

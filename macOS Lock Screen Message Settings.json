@@ -1,0 +1,18 @@
+{
+  "title": "Lock Screen Message (com.apple.shareddeviceconfiguration)",
+  "description": "Lock Screen Message settings",
+  "properties": {
+    "LockScreenFootnote": {
+      "type": "string",
+      "title": "Lock Screen Footnote",
+      "description": "Displays a name, address, or phone number on the Login window and Lock screen.",
+      "property_order": 10
+    },
+    "AssetTagInformation": {
+      "type": "string",
+      "title": "Asset tag",
+      "description": "Displays the asset tag information in the Login window and on the Lock screen.",
+      "property_order": 15
+    }
+  }
+}

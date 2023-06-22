@@ -1,0 +1,66 @@
+{
+	"title": "com.apple.loginwindow",
+	"description": "Apple Menu Commands",
+	"properties": {
+        "PowerOffDisabledWhileLoggedIn": {
+            "title": "PowerOffDisabledWhileLoggedIn",
+            "description": "If true, disables the Power Off menu item when the user is logged in.",
+            "property_order": 5,
+            "anyOf": [
+                {"type": "null", "title": "Not Configured"},
+                {
+                    "title": "Configured",
+                    "type": "boolean"
+                }
+            ]
+        },
+        "ShutDownDisabledWhileLoggedIn": {
+            "title": "Shut Down Disabled While Logged In",
+            "description": "If true, disables the Shut Down menu item when the user is logged in.",
+            "property_order": 10,
+            "anyOf": [
+                {"type": "null", "title": "Not Configured"},
+                {
+                    "title": "Configured",
+                    "type": "boolean"
+                }
+            ]
+        },
+        "RestartDisabledWhileLoggedIn": {
+            "title": "Restart Disabled While Logged In",
+            "description": "If true, disables the Restart menu item when the user is logged in.",
+            "property_order": 15,
+            "anyOf": [
+                {"type": "null", "title": "Not Configured"},
+                {
+                    "title": "Configured",
+                    "type": "boolean"
+                }
+            ]
+        },
+        "LogOutDisabledWhileLoggedIn": {
+            "title": "Log Out Disabled While Logged In",
+            "description": "If true, disables the Log Out menu item when the user is logged in.",
+            "property_order": 20,
+            "anyOf": [
+                {"type": "null", "title": "Not Configured"},
+                {
+                    "title": "Configured",
+                    "type": "boolean"
+                }
+            ]
+        },
+        "DisableScreenLockImmediate": {
+            "title": "Disable Screen Lock Immediate",
+            "description": "If true, disables the immediate Screen Lock functions.",
+            "property_order": 25,
+            "anyOf": [
+                {"type": "null", "title": "Not Configured"},
+                {
+                    "title": "Configured",
+                    "type": "boolean"
+                }
+            ]
+        }
+	}
+}

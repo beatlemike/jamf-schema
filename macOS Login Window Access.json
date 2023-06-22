@@ -1,0 +1,56 @@
+{
+  "title": "com.apple.loginwindow",
+  "description": "macOS Login Window Access",
+  "properties": {
+    "AllowList": {
+      "type": "array",
+      "title": "Allowed Users or Groups",
+      "description": "User or group GUIDs of users that are allowed to log in. An asterisk '*' string specifies all users or groups.",
+      "property_order": 5,
+      "items": {
+        "type": "string",
+        "title": "User or Group"
+      }
+    },
+    "DenyList": {
+      "type": "array",
+      "title": "DenyList",
+      "description": "Denied Users or Groups",
+      "property_order": 10,
+      "items": {
+        "type": "string",
+        "title": "User or Group"
+      }
+    },
+    "LocalUsersHaveWorkgroups": {
+      "type": "boolean",
+      "title": "Local-only users use available workgroup settings",
+      "description": "",
+      "property_order": 15
+    },
+    "CombineUserWorkgroups": {
+      "type": "boolean",
+      "title": "Combine available workgroup settings",
+      "description": "",
+      "property_order": 20
+    },
+    "LocalUserLoginEnabled": {
+      "type": "boolean",
+      "title": "Local-only users may log in",
+      "description": "",
+      "property_order": 25
+    },
+    "FlattenUserWorkgroups": {
+      "type": "boolean",
+      "title": "Ignore workgroup nesting",
+      "description": "",
+      "property_order": 30
+    },
+    "AlwaysShowWorkgroupDialog": {
+      "type": "boolean",
+      "title": "Always show workgroup dialog during log in",
+      "description": "",
+      "property_order": 35
+    }
+  }
+}

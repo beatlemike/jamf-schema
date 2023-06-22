@@ -1,0 +1,64 @@
+{
+  "title": "Global Preferences (.GlobalPreferences)",
+  "description": "Global Preferences settings",
+  "properties": {
+    "com.apple.autologout.AutoLogOutDelay": {
+      "type": "integer",
+      "title": "Auto LogOut Delay",
+      "description": "The autologout delay, in seconds. A value of 0 means autologout is off. In some cases, this delay may be restricted to values between 5 minutes and 24 hours.",
+      "property_order": 5
+    },
+    "MultipleSessionEnabled": {
+      "type": "boolean",
+      "title": "Enable Fast User Switching",
+      "description": "If set to false, fast user switching is disabled.",
+      "property_order": 10
+    },
+    "userMenuExtraStyle": {
+      "type": "integer",
+      "title": "Fast User Switching Menu Style",
+      "description": "0 = Full Name, 1 = Account Name (username), 2 = Icon (default)",
+      "property_order": 15
+    },
+    "CSUIDisable32BitWarning": {
+      "type": "boolean",
+      "title": "Hide 32-bit App Compatibility Alert",
+      "default": false,
+      "description": "Hides the one-time alert shown when opening a 32-bit application.",
+      "property_order": 20
+    },
+    "NSDocumentSaveNewDocumentsToCloud": {
+      "type": "boolean",
+      "title": "Save New Documents to iCloud",
+      "default": true,
+      "description": "If set to false, applications won't default to save to iCloud.",
+      "property_order": 25
+    },
+    "AppleShowScrollBars": {
+      "type": "string",
+      "title": "Show Scroll Bars",
+      "default": "Automatic",
+      "description": "When should the scroll bars be shown?",
+      "enum": [
+        "Automatic",
+        "WhenScrolling",
+        "Always"
+      ],
+      "options": {
+        "enum_titles": [
+          "Automatically based on mouse or trackpad",
+          "When scrolling",
+          "Always"
+        ]
+      },
+      "property_order": 30
+    },
+    "AppleShowAllExtensions": {
+      "type": "boolean",
+      "title": "Show all filename extensions",
+      "default": false,
+      "description": "Enable to forcibly show all file extensions in Finder.",
+      "property_order": 35
+    }
+  }
+}

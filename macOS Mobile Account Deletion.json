@@ -1,0 +1,12 @@
+{
+  "title": "com.apple.MCX",
+  "description": "com.apple.MCX",
+  "properties": {
+    "cachedaccounts.expiry.delete.disusedSeconds": {
+      "type": "integer",
+      "title": "Delete Mobile Accounts",
+      "description": "Number of seconds before cached account is deleted after last logout.",
+      "property_order": 5
+    }
+  }
+}

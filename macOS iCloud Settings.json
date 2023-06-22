@@ -1,0 +1,84 @@
+{
+  "title": "com.apple.applicationaccess",
+  "description": "Application Access",
+  "properties": {
+    "allowCloudKeychainSync": {
+      "type": "boolean",
+      "title": "Allow iCloud Keychain Sync",
+      "description": "If false, disables iCloud keychain synchronization. ",
+      "property_order": 5
+    },
+    "allowCloudFMM": {
+      "type": "boolean",
+      "title": "Allow iCloud Find My Mac",
+      "description": "If false, disables macOS Find My Mac iCloud service.",
+      "property_order": 10
+    },
+    "allowCloudCalendar": {
+      "type": "boolean",
+      "title": "Allow iCloud Calendar",
+      "description": "If false, disables iCloud Calendar services.",
+      "property_order": 15
+    },
+    "allowCloudReminders": {
+      "type": "boolean",
+      "title": "Allow iCloud Reminders",
+      "description": "If false, disables iCloud Reminder services.",
+      "property_order": 20
+    },
+    "allowCloudBTMM": {
+      "type": "boolean",
+      "title": "Allow iCloud Back to My Mac",
+      "description": "If false, disables macOS Back to My Mac iCloud service.",
+      "property_order": 25
+    },
+    "allowCloudNotes": {
+      "type": "boolean",
+      "title": "Allow iCloud Notes",
+      "description": "If false, disables iCloud Notes services.",
+      "property_order": 30
+    },
+    "allowCloudPhotoLibrary": {
+      "type": "boolean",
+      "title": "Allow iCloud Photo Library",
+      "description": "If false, disables iCloud Photo Library. Any photos not fully downloaded from iCloud Photo Library to the device are removed from local storage.",
+      "property_order": 35
+    },
+    "allowCloudBookmarks": {
+      "type": "boolean",
+      "title": "Allow iCloud Bookmarks",
+      "description": "If false, disables iCloud Bookmark sync.",
+      "property_order": 40
+    },
+    "allowCloudMail": {
+      "type": "boolean",
+      "title": "Allow iCloud Mail",
+      "description": "If false, disables iCloud Mail services.",
+      "property_order": 45
+    },
+    "allowCloudDesktopAndDocuments": {
+      "type": "boolean",
+      "title": "Allow iCloud Desktop and Documents Sync",
+      "description": "If false, disables cloud desktop and document services.",
+      "property_order": 50
+    },
+    "allowCloudAddressBook": {
+      "type": "boolean",
+      "title": "Allow iCloud Address Book",
+      "description": "If false, disables iCloud Address Book services.",
+      "property_order": 55
+    },
+    "allowCloudDocumentSync": {
+      "type": "boolean",
+      "title": "Allow iCloud Drive",
+      "description": "If false, disables document and key-value syncing to iCloud.",
+      "property_order": 60
+    },
+    "allowCloudPrivateRelay": {
+      "type": "boolean",
+      "title": "Allow iCloud Private Relay",
+      "description": "If false, disables iCloud Private Relay.",
+      "property_order": 65
+    }
+  }
+}

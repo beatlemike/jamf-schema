@@ -1,0 +1,16 @@
+{
+  "title": "com.apple.Siri",
+  "description": "macOS Siri Settings",
+  "properties": {
+    "StatusMenuVisible": {
+      "type": "boolean",
+      "title": "Enable Status Menu",
+      "property_order": 5
+    },
+    "UserHasDeclinedEnable": {
+      "type": "boolean",
+      "title": "User Can Not Enable Siri",
+      "property_order": 10
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "title": "com.apple.loginwindow",
+  "description": "Login Window",
+  "properties": {
+    "showInputMenu": {
+      "type": "boolean",
+      "title": "Show Input Menu",
+      "description": "Show input menu in login window.",
+      "property_order": 5
+    },
+    "LoginwindowText": {
+      "type": "string",
+      "title": "Banner",
+      "description": "Enter a message that's displayed above the login prompt. You might use this to provide a warning about unauthorized use.",
+      "property_order": 10
+    },
+    "SleepDisabled": {
+      "type": "boolean",
+      "title": "Sleep Disabled",
+      "description": "Hide the Sleep button,",
+      "property_order": 15
+    },
+    "RestartDisabled": {
+      "type": "boolean",
+      "title": "Restart Disabled",
+      "description": "Hide the Restart button.",
+      "property_order": 20
+    },
+    "ShutDownDisabled": {
+      "type": "boolean",
+      "title": "Shut Down Disabled",
+      "description": "Hide the Shut Down button.",
+      "property_order": 25
+    },
+    "LogOutDisabledWhileLoggedIn": {
+      "type": "boolean",
+      "title": "Log Out Menu Item Disabled",
+      "description": "Hide the Log Out menu item.",
+      "property_order": 30
+    },
+    "RestartDisabledWhileLoggedIn": {
+      "type": "boolean",
+      "title": "Restart Menu Item Disabled",
+      "description": "Hide the Restart menu item.",
+      "property_order": 35
+    },
+    "ShutDownDisabledWhileLoggedIn": {
+      "type": "boolean",
+      "title": "Shut Down Menu Item Disabled",
+      "description": "Hide the Shut Down menu item.",
+      "property_order": 40
+    },
+    "PowerOffDisabledWhileLoggedIn": {
+      "type": "boolean",
+      "title": "Power Off Menu Item Disabled",
+      "description": "Hide the Power Off menu item.",
+      "property_order": 45
+    },
+    "HideAdminUsers": {
+      "type": "boolean",
+      "title": "Hide Admin Users",
+      "description": "If true, hides administrator users when showing a user list.",
+      "property_order": 50
+    },
+    "IncludeNetworkUser": {
+      "type": "boolean",
+      "title": "Show Network Users",
+      "description": "If true, shows network users when showing a user list.",
+      "property_order": 55
+    },
+    "SHOWOTHERUSERS_MANAGED": {
+      "type": "boolean",
+      "title": "Display Other...",
+      "description": "If true, displays Other... when showing a list of users.",
+      "property_order": 60
+    },
+    "SHOWFULLNAME": {
+      "type": "boolean",
+      "title": "Login Window Behavior",
+      "description": "If true, shows the name and password dialog; if false, displays a list of users.",
+      "property_order": 65
+    },
+    "HideMobileAccounts": {
+      "type": "boolean",
+      "title": "Hide Mobile Accounts",
+      "description": "If true, hides mobile account users in a user list. In some cases, mobile users show up as network users.",
+      "property_order": 70
+    },
+    "AdminHostInfo": {
+      "type": "string",
+      "title": "Show additional information in the menu bar",
+      "description": "Cycle through the hostname, macOS version, and IP address when the menu bar is clicked.",
+      "enum": [
+        "HostName",
+        "SystemVersion",
+        "IPAddress"
+      ],
+      "options": {
+        "enum_titles": [
+          "Hostname",
+          "System Version",
+          "IP Address"
+        ],
+        "property_order": 75
+      },
+      "HideLocalUsers": {
+        "type": "boolean",
+        "title": "Hide Local Users",
+        "description": "If true, shows only network and system users when showing a user list.",
+        "property_order": 80
+      }
+    }
+  }
+}

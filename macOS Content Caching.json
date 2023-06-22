@@ -1,0 +1,12 @@
+{
+  "title": "com.apple.applicationaccess",
+  "description": "Content Caching",
+  "properties": {
+    "AutoEnableTetheredCaching": {
+      "type": "boolean",
+      "title": "allowContentCaching",
+      "description": "If true, activates the content cache when possible and prevents it from being disabled.",
+      "property_order": 5
+    }
+  }
+}

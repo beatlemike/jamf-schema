@@ -1,0 +1,24 @@
+{
+  "title": "com.apple.preferences.sharing.SharingPrefsExtension",
+  "description": "Media Sharing",
+  "properties": {
+    "legacySharingUIStatus": {
+      "type": "boolean",
+      "title": "Legacy Sharing",
+      "description": "When Media Sharing is enabled, the computer starts a network listening service that shares the contents of the user’s music collection with other users in the same subnet.",
+      "property_order": 5
+    },
+    "homeSharingUIStatus": {
+      "type": "boolean",
+      "title": "Home Sharing",
+      "description": "When Media Sharing is enabled, the computer starts a network listening service that shares the contents of the user’s music collection with other users in the same subnet.",
+      "property_order": 10
+    },
+    "mediaSharingUIStatus": {
+      "type": "boolean",
+      "title": "Media Sharing",
+      "description": "When Media Sharing is enabled, the computer starts a network listening service that shares the contents of the user’s music collection with other users in the same subnet.",
+      "property_order": 15
+    }
+  }
+}
