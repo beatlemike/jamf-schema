@@ -8,11 +8,17 @@
       "description": "Set to \"18\" to enable.",
       "property_order": 5
     },
+    "WiFi": {
+      "type": "integer",
+      "title": "Enable Wi-Fi Menu",
+      "description": "Set to \"18\" to enable.",
+      "property_order": 10
+    },
     "UserSwitcher": {
       "type": "integer",
       "title": "Enable Fast User Switching Menu",
       "description": "Set to \"8\" to disable. Set to \"2\" show in Menu Bar. Set to \"1\" show in Control Center. Set to \"3\" show in both.",
-      "property_order": 5
+      "property_order": 15
     }
   }
 }

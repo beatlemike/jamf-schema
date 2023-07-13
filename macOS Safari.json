@@ -326,6 +326,11 @@
       "type": "boolean",
       "title": "Print headers and footers",
       "default": "true"
+    },
+    "WebKitPreferences.privateClickMeasurementEnabled": {
+      "type": "boolean",
+      "title": "Allow Privacy-Preserving Measurement of Ad Effectiveness",
+      "default": "true"
     }
   }
 }

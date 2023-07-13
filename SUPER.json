@@ -252,7 +252,7 @@
     },
     "DisplayAccessoryType": {
       "title": "DisplayAccessoryType: Display Accessory Type",
-      "description": "This option (TEXTBOX, HTMLBOX, HTML, IMAGE, VIDEO, VIDEOAUTO) allows you to specify a custom display accessory view for IBM Notifier interactive dialogs. Must be used with DisplayAccessoryContent.",
+      "description": "This option (TEXTBOX, HTMLBOX, HTML, IMAGE, VIDEO, VIDEOAUTO) allows you to specify a custom display accessory view for IBM Notifier interactive dialogs. Must be used with DisplayAccessoryDefault.",
       "property_order": 41,
       "type": "string"
     },
