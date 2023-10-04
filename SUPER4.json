@@ -18,7 +18,7 @@
     },
     "InstallMacOSMajorUpgrades": {
       "title": "InstallMacOSMajorUpgrades: Allow Major Upgrades",
-      "description": "This option can automatically enforce all contemporary macOS upgrade workflows from macOS 10.14 (older macOS versions may work but are not tested) to macOS 13.X. This includes support for Intel, Apple Silicon via local authentication, Apple Silicon via Jamf Pro API authentication, and Apple Silicon user request (similar to Nudge).",
+      "description": "This option can automatically enforce all contemporary macOS upgrade workflows from macOS 11 and newer. This includes support for Intel, Apple Silicon via local authentication, Apple Silicon via Jamf Pro API authentication, and Apple Silicon user request (similar to Nudge).",
       "property_order": 10,
       "type": "boolean"
     },
@@ -42,19 +42,19 @@
     },
     "WorkflowOnlyDownload": {
       "title": "WorkflowOnlyDownload: Only Download",
-      "description": "This workflow option allows you to pre-cache (but not install) macOS update/upgrades silently in the background. This significantly shortens the restart time when an installation workflow is started. If you use this option along with the Recheck Defer option then super always keeps the latest available macOS updates and allowed macOS upgrades ready for installation.",
+      "description": "This workflow option allows you to pre-cache (but not install) macOS update/upgrades silently in the background. This significantly shortens the restart time when an installation workflow is started. This option always keeps the latest available macOS updates and allowed macOS upgrades ready for installation.",
       "property_order": 30,
       "type": "boolean"
     },
     "WorkflowZeroDateManual": {
       "title": "WorkflowZeroDateManual: On this date, the computer restarts and updates without asking the user for approval.",
-      "description": "Example (YYYY-MM-DD:hh:mm) If this date has passed, the computer restarts and updates without asking the user for approval. However, the user is notified that a restart is pending. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Also see the $dateFORMAT and $timeFORMAT parameters for date display options. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline. Finally, use a date value of X to disable this option.",
+      "description": "Example (YYYY-MM-DD:hh:mm) If this date has passed, the computer restarts and updates without asking the user for approval. However, the user is notified that a restart is pending. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline.",
       "property_order": 35,
       "type": "string"
     },
     "WorkflowDisableUpdateCheck": {
       "title": "WorkflowDisableUpdateCheck: Skip installing updates and only run jamf policies",
-      "description": "Skip Apple software updates, even if they are available. This option can also be used along with --force-restart and --jamf-policies to only run Jamf Pro Polices and then restart the computer while still taking advantage of notifications, dialogs, deferrals, and deadline options. Alternatley, use this option along with --reset-super to clear any super preferences, kill any existing super processes and delete the super LaunchDaemon.",
+      "description": "Skip Apple software updates, even if they are available. This option can also be used along with --workflow-restart-without-updates and --workflow-jamf-policy-triggers to only run Jamf Pro Polices and then restart the computer while still taking advantage of notifications, dialogs, deferrals, and deadline options. Alternatley, use this option along with --reset-super to clear any super preferences, kill any existing super processes and delete the super LaunchDaemon.",
       "property_order": 40,
       "type": "boolean"
     },
@@ -66,97 +66,97 @@
     },
     "WorkflowJamfPolicyTriggers": {
       "title": "WorkflowJamfPolicyTriggers: JAMF triggers to run",
-      "description": "Example (slack,chromeinstall,policy1) One or more Jamf Pro Policy Triggers that are comma separated with no spaces. If a restart is required for system updates or forced via --force-restart, this list of Jamf Policy Triggers runs before any available updates install and the computer restarts. This option can also be used along with the --skip-updates option to run only the Jamf Policy Triggers. Finally, use a value of X to disable this option.",
+      "description": "Example (slack,chromeinstall,policy1) One or more Jamf Pro Policy Triggers that are comma separated with no spaces. If a restart is required for system updates or forced via --workflow-restart-without-updates, this list of Jamf Policy Triggers runs before any available updates install and the computer restarts. This option can also be used along with the --workflow-disable-update-check option to run only the Jamf Policy Triggers.",
       "property_order": 50,
       "type": "string"
     },
-    "WorkflowRestartWithoutUpdatess": {
+    "WorkflowRestartWithoutUpdates": {
       "title": "WorkflowRestartWithoutUpdates: Force restart even if software updates don't require it",
-      "description": "Force a restart even if Apple software updates do not need it. Useful when used along with --test-mode or if no updates are available but you still want to use --jamf-policies and then restart.",
+      "description": "Force a restart even if Apple software updates do not need it. Useful when used along with --test-mode or if no updates are available but you still want to use --workflow-jamf-policy-triggers and then restart.",
       "property_order": 55,
       "type": "boolean"
     },
     "DeferralTimerDefault": {
-      "title": "DeferralTimerDefault: Deferral Default time in seconds",
-      "description": "The number of seconds to defer until the next update attempt if a user choses not to update restart. This deferral time is also used in cases when a required service is temporarily unavailable (for example, network or Jamf Pro connectivity issues). Using this option overrides the default deferral time which is set to 3600 seconds (1 hour) via the $defaultDeferSECONDS parameter. Times less than 120 seconds or more than 86400 seconds (1 day) are rounded accordingly. Also see the --menu option to display a pop-up menu allowing the user to select an alternate deferral time. Finally, use a value of X to return this option to its default.",
+      "title": "DeferralTimerDefault: Deferral Default time in minutes",
+      "description": "The number of minutes to defer until the next update attempt if a user choses not to update restart. This deferral time is also used in cases when a required service is temporarily unavailable (for example, network or Jamf Pro connectivity issues). Using this option overrides the default deferral time which is set to 60 minutes (1 hour).",
       "property_order": 60,
       "type": "string"
     },
     "DeferralTimerMenu": {
       "title": "DeferralTimerMenu: Deferral options to show in the drop down menu",
-      "description": "Example (7200,14800,86400) Display a deferral time pop-up menu in the non-deadline update restart dialog that allows the user to overide the --default-defer time. The time selections are specified with one or more number of seconds that are comma separated with no spaces. The first number in the list is the default selection for the menu, thus it will be automatically selected if you also set --display-timeout. Times less than 120 seconds or more than 86400 seconds (1 day) are rounded accordingly. Finally, use a value of X to disable this option.",
+      "description": "Example (120,240,1440) Display a deferral time pop-up menu in the non-deadline update restart dialog that allows the user to overide the default defer time. The time selections are specified with one or more number of minutes that are comma separated with no spaces. The first number in the list is the default selection for the menu, thus it will be automatically selected.",
       "property_order": 65,
       "type": "string"
     },
     "DeferralTimerFocus": {
-      "title": "DeferralTimerFocus: Default defer amount in seconds for Focus or Do Not Disturb mode",
-      "description": "The number of seconds to defer the update restart dialog automatically if a process has prevented display sleep (for example, during an active meeting) or the user has Focus or Do Not Disturb enabled. With this option you should also consider using --focus-deadline and --soft-deadline to ensure users are offered a chance to defer before a required update restart is enforced via --hard-deadline. Times less than 120 seconds or more than 86400 seconds (1 day) are rounded accordingly. Finally, use a value of X to disable this option.",
+      "title": "DeferralTimerFocus: Default defer amount in minutes for Focus or Do Not Disturb mode",
+      "description": "The number of minutes to defer the update restart dialog automatically if a process has prevented display sleep (for example, during an active meeting) or the user has Focus or Do Not Disturb enabled. With this option you should also consider using either of --deadline-date-focus, --deadline-days-focus, --deadline-count-focus and either of --deadline-date-soft, --deadline-days-soft, --deadline-count-soft to ensure users are offered a chance to defer before a required update restart is enforced via either of --deadline-date-hard, --deadline-days-hard, --deadline-count-hard=number.",
       "property_order": 70,
       "type": "string"
     },
     "DeferralTimerError": {
-      "title": "DeferralTimerError: The number of seconds to defer if no software updates are found",
-      "description": "The number of seconds to defer if no software updates are found. Enabling this option results in super acting as a permanent agent that checks for software updates on a regular basis. Logically, this option can not be used along with the --skip-updates option. Times less than 120 seconds or more than 2628288 seconds (30 days) are rounded accordingly. Finally, use a seconds value of X to disable this option.",
+      "title": "DeferralTimerError: The number of minutes to defer deferral time specifically for errors",
+      "description": "Example (5) This option allows you to set a deferral time specifically for errors (as opposed to using the default defer time).",
       "property_order": 75,
       "type": "string"
     },
     "DeferralTimerWorkflowRelaunch": {
-      "title": "DeferralTimerWorkflowRelaunch: The number of seconds to defer deferral time specifically for errors",
-      "description": "Example (360) This option allows you to set a deferral time specifically for errors (as opposed to using the default defer time).",
+      "title": "DeferralTimerWorkflowRelaunch: The number of minutes to defer if no software updates are found",
+      "description": "The number of minutes to defer if no software updates are found. Enabling this option results in super acting as a permanent agent that checks for software updates on a regular basis. Logically, this option can not be used along with the --workflow-disable-update-check.",
       "property_order": 80,
       "type": "string"
     },
     "DeadlineCountFocus": {
       "title": "DeadlineCountFocus: The maximum number of automatic deferrals allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting).",
-      "description": "The maximum number of automatic deferrals allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear as normal. With this option you should also consider setting a specific --focus-defer time, otherwise the focus deferment time is based on the --default-defer time. Note that if a user is always in a Focus mode, the --focus-count deadline must pass first before the --soft-count or --hard-count options are started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum focus count deadline. Finally, use a number value of X to disable this option.",
+      "description": "The maximum number of automatic deferrals allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear as normal. With this option you should also consider setting a specific --deferral-timer-focus time, otherwise the focus deferment time is based on the --deferral-timer-default. Note that if a user is always in a Focus mode, the --deadline-count-focus deadline must pass first before the --deadline-count-soft or --deadline-count-hard options are started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum focus count deadline.",
       "property_order": 85,
       "type": "string"
     },
     "DeadlineCountSoft": {
       "title": "DeadlineCountSoft: The maximum number of user selected deferrals allowed before the soft deadline dialog.",
-      "description": "The maximum number of user selected deferrals allowed before the soft deadline dialog. The soft deadline is an interactive update restart dialog indicating that no more deferrals are allowed. This option can not be used along with the --hard-count option as logically there can only be one behavior after passing the maximum number of user deferrals. Note that if this option is also used with the --focus-count option and the user is always in a Focus mode, then the --focus-count deadline must pas first before the --soft-count is started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum soft count deadline. Finally, use a number value of X to disable this option.",
+      "description": "The maximum number of user selected deferrals allowed before the soft deadline dialog. The soft deadline is an interactive update restart dialog indicating that no more deferrals are allowed. This option can not be used along with the --deadline-date-hard option as logically there can only be one behavior after passing the maximum number of user deferrals. Note that if this option is also used with the --deadline-count-focus option and the user is always in a Focus mode, then the --deadline-count-focus must pass first before the --deadline-count-soft is started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum soft count deadline.",
       "property_order": 90,
       "type": "string"
     },
     "DeadlineCountHard": {
       "title": "DeadlineCountHard: The maximum number of user selected deferrals allowed before the computer automatically restarts for updates without asking the user for approval.",
-      "description": "The maximum number of user selected deferrals allowed before the computer automatically restarts for updates without asking the user for approval. However, the user is notified that a restart is pending. This option can not be used along with the --soft-count option as logicially there can only be one behavior after passing the maximum number of user deferrals. Note that if this option is also used with the --focus-count option and the user is always in a Focus mode, then the --focus-count deadline must pas first before the --hard-count is started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum hard count deadline. Finally, use a number value of X to disable this option.",
+      "description": "The maximum number of user selected deferrals allowed before the computer automatically restarts for updates without asking the user for approval. However, the user is notified that a restart is pending. This option can not be used along with the --deadline-date-soft option as logicially there can only be one behavior after passing the maximum number of user deferrals. Note that if this option is also used with the --deadline-count-focus option and the user is always in a Focus mode, then the --deadline-count-focus deadline must pass first before the --deadline-count-hard is started. Additionally, other maximum days or date deadlines that have passed can override this option. For testing, use a number value of 0 to simulate being past the maximum hard count deadline.",
       "property_order": 95,
       "type": "string"
     },
     "DeadlineDaysFocus": {
       "title": "DeadlineDaysFocus: The maximum number of days that automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting).",
-      "description": "The maximum number of days that automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear. With this option you should also consider setting a specific --focus-defer time, otherwise the focus deferment time is be based on the --default-defer time. Note that when used along with the --soft-days or --hard-days options, logically the --focus-days value must always be the least number of days. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --zero-day option to' simulate being past the maximum number of days deadline. Finally, use a days value of X to disable this option.",
+      "description": "The maximum number of days that automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear. With this option you should also consider setting a specific --deferral-timer-focus, otherwise the focus deferment time is be based on the --deferral-timer-default time. Note that when used along with the --deadline-days-soft or --deadline-days-hard options, logically the --deadline-date-focus value must always be the least number of days. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --workflow-zero-date-manual option to' simulate being past the maximum number of days deadline.",
       "property_order": 100,
       "type": "string"
     },
     "DeadlineDaysSoft": {
       "title": "DeadlineDaysSoft: The maximum number of days allowed before the soft deadline dialog.",
-      "description": "The maximum number of days allowed before the soft deadline dialog. The soft deadline is an interactive update restart dialog indicating that no more deferrals are allowed. Note that when used along with the --focus-days or --hard-days options, logically the --soft-days value must always be more than the --focus-days value and less than the --hard-days value. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --zero-day option to simulate being past the maximum number of days deadline. Finally, use a days value of X to disable this option.",
+      "description": "The maximum number of days allowed before the soft deadline dialog. The soft deadline is an interactive update restart dialog indicating that no more deferrals are allowed. Note that when used along with the --deadline-days-focus or --deadline-days-hard options, logically the --deadline-days-soft value must always be more than the --deadline-days-focus value and less than the --deadline-days-hard value. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --workflow-zero-date-manual option to simulate being past the maximum number of days deadline.",
       "property_order": 105,
       "type": "string"
     },
     "DeadlineDaysHard": {
       "title": "DeadlineDaysHard: The maximum number of days allowed before the computer automatically restarts for updates without asking the user for approval.",
-      "description": "The maximum number of days allowed before the computer automatically restarts for updates without asking the user for approval. However, the user is notified that a restart is pending. Note that when used along with the --focus-days or --soft-days options, logically the --hard-days value must always be the most number of days. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --zero-day option to simulate being past the maximum number of days deadline. Finally, use a days value of X to disable this option.",
+      "description": "The maximum number of days allowed before the computer automatically restarts for updates without asking the user for approval. However, the user is notified that a restart is pending. Note that when used along with the --deadline-days-focus or --deadline-days-soft options, logically the --deadline-days-hard value must always be the most number of days. Additionally, other maximum deferral count or date deadlines that have passed can override this option. For testing, use a day value of 0 or the --workflow-zero-date-manual option to simulate being past the maximum number of days deadline.",
       "property_order": 110,
       "type": "string"
     },
     "DeadlineDateFocus": {
       "title": "DeadlineDateFocus: This is the last date and time when automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep.",
-      "description": "Example (YYYY-MM-DD:hh:mm) This is the last date and time when automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Also see the $dateFORMAT and $timeFORMAT parameters for date display options. Note that when used along with the --soft-date or --hard-date options, the --focus-date value must always be the earliest in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline. Finally, use a date value of X to disable this option.",
+      "description": "Example (YYYY-MM-DD:hh:mm) This is the last date and time when automatic deferrals are allowed if the system is in user-enabled Focus/Do Not Disturb or when a process has requested that the display not go to sleep (for example, during an active meeting). After this deadline the update restart dialogs always appear. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Note that when used along with the --deadline-date-soft or --deadline-date-hard options, the --deadline-date-focus value must always be the earliest in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline.",
       "property_order": 115,
       "type": "string"
     },
     "DeadlineDateSoft": {
       "title": "DeadlineDateSoft: If this date and time have passed, an interactive update restart dialog appears indicating that no more user deferrals are allowed.",
-      "description": "Example (YYYY-MM-DD:hh:mm) If this date and time have passed, an interactive update restart dialog appears indicating that no more user deferrals are allowed. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Also see the $dateFORMAT and $timeFORMAT parameters for date display options. Note that when used along with the --focus-date or --hard-date options, the --soft-date value must always be after the --focus-date in time but before the --hard-date in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline. Finally, use a date value of X to disable this option.",
+      "description": "Example (YYYY-MM-DD:hh:mm) If this date and time have passed, an interactive update restart dialog appears indicating that no more user deferrals are allowed. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Note that when used along with the --deadline-date-focus or --deadline-date-hard options, the --deadline-date-soft value must always be after the --deadline-date-focus in time but before the --deadline-date-hard in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline.",
       "property_order": 120,
       "type": "string"
     },
     "DeadlineDateHard": {
       "title": "DeadlineDateHard: If this date has passed, the computer restarts and updates without asking the user for approval.",
-      "description": "Example (YYYY-MM-DD:hh:mm) If this date has passed, the computer restarts and updates without asking the user for approval. However, the user is notified that a restart is pending. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Also see the $dateFORMAT and $timeFORMAT parameters for date display options. Note that when used along with the --focus-date or --soft-date options, the --hard-date value must always be the latest in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline. Finally, use a date value of X to disable this option.",
+      "description": "Example (YYYY-MM-DD:hh:mm) If this date has passed, the computer restarts and updates without asking the user for approval. However, the user is notified that a restart is pending. At a minimum, you must always specify year-month-day. Hours are represented by a 24-hour clock, and any non-specified hours or minutes are rounded to 00. Note that when used along with the --deadline-date-focus or --deadline-date-soft options, the --deadline-date-hard value must always be the latest in time. Additionally, other maximum deferral count or maximum days deadlines that have passed can override this option. For testing use a date and time value in the past to simulate being past this date deadline.",
       "property_order": 125,
       "type": "string"
     },
@@ -168,7 +168,7 @@
     },
     "DialogTimeoutRestartOrDefer": {
       "title": "DialogTimeoutRestartOrDefer: The maximum number of days allowed before the computer automatically restarts for updates without asking the user for approval.",
-      "description": "Example (YYYY-MM-DD:hh:mm) Instead of having the days deadline counter automatically select the day zero date, this option sets a specific date and time as day zero. Note that you need to manually update this value every time you want to set a new day zero. Finally, use a date value of X to disable this option.",
+      "description": "Example (YYYY-MM-DD:hh:mm) Instead of having the days deadline counter automatically select the day zero date, this option sets a specific date and time as day zero. Note that you need to manually update this value every time you want to set a new day zero.",
       "property_order": 135,
       "type": "string"
     },
@@ -268,19 +268,19 @@
     },
     "DisplayIconFile": {
       "title": "DisplayIconFile: Path to Icon to display in notifications",
-      "description": "Example (/Library/Application Support/icon.icns) Local path or http(s) URL to a file that is the picture to display in notifications or dialogs. Use a value of X to = return this option to its default.",
+      "description": "Example (/Library/Application Support/icon.icns) Local path or http(s) URL to a file that is the picture to display in notifications or dialogs.",
       "property_order": 175,
       "type": "string"
     },
     "DisplayIconSize": {
       "title": "DisplayIconSize: Icon Size in Pixels",
-      "description": "Example (512) Number of pixels for the --display-icon in IBM Notifier dialogs. Using this option overrides the default IBM Notifier icon size which is set to 96 pixels via the $ibmNotifierIconSIZE parameter. Any size less than 32 pixles or more than 150 pixles is rounded accordingly. Finally, use a value of X to return this option to its default.",
+      "description": "Example (512) Number of pixels for the icon in dialogs. Using this option overrides the default icon size which is set to 96 pixels. Any size less than 32 pixles or more than 150 pixles is rounded accordingly.",
       "property_order": 180,
       "type": "string"
     },
     "DisplayAccessoryType": {
       "title": "DisplayAccessoryType: Display Accessory Type",
-      "description": "This option (TEXTBOX, , HTML, IMAGE, VIDEO, VIDEOAUTO) allows you to specify a custom display accessory view for IBM Notifier interactive dialogs. Must be used with DisplayAccessoryDefault.",
+      "description": "This option (TEXTBOX, , HTML, IMAGE, VIDEO, VIDEOAUTO) allows you to specify a custom display accessory view for interactive dialogs. Must be used with Display Accessory content files.",
       "property_order": 185,
       "type": "string",
       "options": {
@@ -330,13 +330,13 @@
     },
     "DisplayHelpButtonString": {
       "title": "DisplayHelpButtonString: Help Button",
-      "description": "This option allows you to specify a help button (ex: https://support.apple.com/en-us/HT201541) for IBM Notifier interactive dialogs (jamfHelper dialogs do not support this option).",
+      "description": "This option allows you to specify a help button (ex: https://support.apple.com/en-us/HT201541).",
       "property_order": 210,
       "type": "string"
     },
     "DisplayWarningButtonString": {
       "title": "DisplayWarningButtonString: Warning Button",
-      "description": "This option allows you to specify a warning button (ex: https://support.apple.com/en-us/HT201222) for IBM Notifier interactive dialogs (jamfHelper dialogs do not support this option).",
+      "description": "This option allows you to specify a warning button (ex: https://support.apple.com/en-us/HT201222).",
       "property_order": 215,
       "type": "string"
     },
@@ -372,7 +372,7 @@
     },
     "TestModeTimeout": {
       "title": "TestModeTimeout: Testing mode timeout in seconds",
-      "description": "Example (30) The amount of time in seconds to leave test notifications and dialogs open before moving on in the workflow. Using this option overrides the default test mode timeout which is set to 10 seconds via the \\$testModeTIMEOUT default parameter. Finally, use a value of X to return this option to its default.",
+      "description": "Example (30) The amount of time in seconds to leave test notifications and dialogs open before moving on in the workflow. Using this option overrides the default test mode timeout which is set to 10 seconds.",
       "property_order": 245,
       "type": "string"
     },
@@ -396,7 +396,7 @@
     },
     "VerboseMode": {
       "title": "VerboseMode: Verbose Mode",
-      "description": "Mode to generate additional log output. Note that with this mode passwords are visible in Terminal but are not saved to \\$superLOG.",
+      "description": "Mode to generate additional log output. Note that with this mode passwords are visible in Terminal but are not saved to the super log.",
       "property_order": 260,
       "type": "boolean"
     }
