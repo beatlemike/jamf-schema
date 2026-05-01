@@ -1,24 +1,151 @@
 {
   "title": "Control Center (com.apple.controlcenter)",
-  "description": "Control Center settings",
+  "description": "Manages Control Center menu bar icon visibility",
+  "__version": "1.0",
+  "__feedback": "your.email@cpp.edu",
+  "options": {
+    "remove_empty_properties": true
+  },
   "properties": {
-    "Bluetooth": {
-      "type": "integer",
-      "title": "Enable Bluetooth Menu",
-      "description": "Set to \"18\" to enable.",
-      "property_order": 5
-    },
     "WiFi": {
-      "type": "integer",
-      "title": "Enable Wi-Fi Menu",
-      "description": "Set to \"18\" to enable.",
-      "property_order": 10
+      "title": "Wi-Fi Menu Bar Icon",
+      "description": "Controls Wi-Fi icon visibility in the menu bar",
+      "property_order": 10,
+      "anyOf": [
+        {
+          "type": "null",
+          "title": "Not Configured"
+        },
+        {
+          "type": "integer",
+          "title": "Configured",
+          "enum": [2, 8, 18],
+          "options": {
+            "enum_titles": [
+              "Show in Menu Bar (2)",
+              "Don't Show in Menu Bar (8)",
+              "Show in Menu Bar - System Wide (18)"
+            ]
+          }
+        }
+      ]
     },
-    "UserSwitcher": {
-      "type": "integer",
-      "title": "Enable Fast User Switching Menu",
-      "description": "Set to \"8\" to disable. Set to \"2\" show in Menu Bar. Set to \"1\" show in Control Center. Set to \"3\" show in both.",
-      "property_order": 15
+    "Bluetooth": {
+      "title": "Bluetooth Menu Bar Icon",
+      "description": "Controls Bluetooth icon visibility in the menu bar",
+      "property_order": 20,
+      "anyOf": [
+        {
+          "type": "null",
+          "title": "Not Configured"
+        },
+        {
+          "type": "integer",
+          "title": "Configured",
+          "enum": [2, 8, 18],
+          "options": {
+            "enum_titles": [
+              "Show in Menu Bar (2)",
+              "Don't Show in Menu Bar (8)",
+              "Show in Menu Bar - System Wide (18)"
+            ]
+          }
+        }
+      ]
+    },
+    "Sound": {
+      "title": "Sound Menu Bar Icon",
+      "description": "Controls Sound icon visibility in the menu bar",
+      "property_order": 30,
+      "anyOf": [
+        {
+          "type": "null",
+          "title": "Not Configured"
+        },
+        {
+          "type": "integer",
+          "title": "Configured",
+          "enum": [2, 8, 18],
+          "options": {
+            "enum_titles": [
+              "Show in Menu Bar (2)",
+              "Don't Show in Menu Bar (8)",
+              "Show in Menu Bar - System Wide (18)"
+            ]
+          }
+        }
+      ]
+    },
+    "Battery": {
+      "title": "Battery Menu Bar Icon",
+      "description": "Controls Battery icon visibility in the menu bar",
+      "property_order": 40,
+      "anyOf": [
+        {
+          "type": "null",
+          "title": "Not Configured"
+        },
+        {
+          "type": "integer",
+          "title": "Configured",
+          "enum": [2, 8, 18],
+          "options": {
+            "enum_titles": [
+              "Show in Menu Bar (2)",
+              "Don't Show in Menu Bar (8)",
+              "Show in Menu Bar - System Wide (18)"
+            ]
+          }
+        }
+      ]
+    },
+    "FocusModes": {
+      "title": "Focus Modes Menu Bar Icon",
+      "description": "Controls Focus icon visibility in the menu bar",
+      "property_order": 50,
+      "anyOf": [
+        {
+          "type": "null",
+          "title": "Not Configured"
+        },
+        {
+          "type": "integer",
+          "title": "Configured",
+          "enum": [2, 8, 16, 18],
+          "options": {
+            "enum_titles": [
+              "Show in Menu Bar (2)",
+              "Don't Show in Menu Bar (8)",
+              "Show When Active (16)",
+              "Show in Menu Bar - System Wide (18)"
+            ]
+          }
+        }
+      ]
+    },
+    "NowPlaying": {
+      "title": "Now Playing Menu Bar Icon",
+      "description": "Controls Now Playing icon visibility in the menu bar",
+      "property_order": 60,
+      "anyOf": [
+        {
+          "type": "null",
+          "title": "Not Configured"
+        },
+        {
+          "type": "integer",
+          "title": "Configured",
+          "enum": [2, 8, 16, 18],
+          "options": {
+            "enum_titles": [
+              "Show in Menu Bar (2)",
+              "Don't Show in Menu Bar (8)",
+              "Show When Active (16)",
+              "Show in Menu Bar - System Wide (18)"
+            ]
+          }
+        }
+      ]
     }
   }
 }
