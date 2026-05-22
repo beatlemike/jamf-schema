@@ -1,18 +1,30 @@
 {
-    "title": "Desktop Services (com.apple.desktopservices)",
-    "description": "Desktop Services settings",
-    "properties": {
-        "DSDontWriteNetworkStores": {
-            "type": "boolean",
-            "title": "Prevent .DS_Store file creation on network volumes",
-            "description": "Prevent .DS_Store file creation when interacting with a remote file server using the Finder.",
-            "links": [
-                {
-                    "rel": "More information",
-                    "href": "https://support.apple.com/en-us/HT1629"
-                }
-            ],
-            "property_order": 5
+  "title": "Desktop Services (com.apple.desktopservices)",
+  "description": "Desktop Services settings",
+  "properties": {
+    "DSDontWriteNetworkStores": {
+      "type": "boolean",
+      "title": "Prevent .DS_Store file creation on network volumes",
+      "description": "Prevent .DS_Store file creation when interacting with a remote file server using the Finder.",
+      "links": [
+        {
+          "rel": "More information",
+          "href": "https://support.apple.com/en-us/102064"
         }
+      ],
+      "property_order": 5
+    },
+    "DSDontWriteUSBStores": {
+      "type": "boolean",
+      "title": "Prevent .DS_Store file creation on USB volumes",
+      "description": "Prevent .DS_Store file creation when interacting with external USB drives and flash storage using the Finder.",
+      "links": [
+        {
+          "rel": "More information",
+          "href": "https://discussions.apple.com/thread/251428275?answerId=251428275021&sortBy=rank#251428275021"
+        }
+      ],
+      "property_order": 10
     }
+  }
 }
