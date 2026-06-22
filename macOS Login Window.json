@@ -1,114 +1,267 @@
 {
-  "title": "com.apple.loginwindow",
-  "description": "Login Window",
+  "title": "macOS Login Window",
+  "description": "com.apple.loginwindow",
   "properties": {
-    "showInputMenu": {
-      "type": "boolean",
-      "title": "Show Input Menu",
-      "description": "Show input menu in login window.",
+    "AdminHostInfo": {
+      "type": "string",
+      "title": "Show additional information in the menu bar",
+      "default": "HostName",
+      "description": "If present, displays additional computer information in the Login Window. Clicking the time area of the menu bar toggles through computer information values.",
+      "enum": ["HostName", "SystemVersion", "IPAddress"],
       "property_order": 5
     },
     "LoginwindowText": {
       "type": "string",
       "title": "Banner",
-      "description": "Enter a message that's displayed above the login prompt. You might use this to provide a warning about unauthorized use.",
+      "description": "The text to display in the Login Window.",
       "property_order": 10
-    },
-    "SleepDisabled": {
-      "type": "boolean",
-      "title": "Sleep Disabled",
-      "description": "Hide the Sleep button,",
-      "property_order": 15
-    },
-    "RestartDisabled": {
-      "type": "boolean",
-      "title": "Restart Disabled",
-      "description": "Hide the Restart button.",
-      "property_order": 20
-    },
-    "ShutDownDisabled": {
-      "type": "boolean",
-      "title": "Shut Down Disabled",
-      "description": "Hide the Shut Down button.",
-      "property_order": 25
-    },
-    "LogOutDisabledWhileLoggedIn": {
-      "type": "boolean",
-      "title": "Log Out Menu Item Disabled",
-      "description": "Hide the Log Out menu item.",
-      "property_order": 30
-    },
-    "RestartDisabledWhileLoggedIn": {
-      "type": "boolean",
-      "title": "Restart Menu Item Disabled",
-      "description": "Hide the Restart menu item.",
-      "property_order": 35
-    },
-    "ShutDownDisabledWhileLoggedIn": {
-      "type": "boolean",
-      "title": "Shut Down Menu Item Disabled",
-      "description": "Hide the Shut Down menu item.",
-      "property_order": 40
-    },
-    "PowerOffDisabledWhileLoggedIn": {
-      "type": "boolean",
-      "title": "Power Off Menu Item Disabled",
-      "description": "Hide the Power Off menu item.",
-      "property_order": 45
-    },
-    "HideAdminUsers": {
-      "type": "boolean",
-      "title": "Hide Admin Users",
-      "description": "If true, hides administrator users when showing a user list.",
-      "property_order": 50
-    },
-    "IncludeNetworkUser": {
-      "type": "boolean",
-      "title": "Show Network Users",
-      "description": "If true, shows network users when showing a user list.",
-      "property_order": 55
-    },
-    "SHOWOTHERUSERS_MANAGED": {
-      "type": "boolean",
-      "title": "Display Other...",
-      "description": "If true, displays Other... when showing a list of users.",
-      "property_order": 60
     },
     "SHOWFULLNAME": {
       "type": "boolean",
-      "title": "Login Window Behavior",
-      "description": "If true, shows the name and password dialog; if false, displays a list of users.",
-      "property_order": 65
+      "title": "Display login window as",
+      "default": false,
+      "description": "If true, shows the name and password dialog. If false, displays a list of users.",
+      "property_order": 15
+    },
+    "HideLocalUsers": {
+      "type": "boolean",
+      "title": "Hide local users",
+      "default": false,
+      "description": "If true, shows only network and system users in the user list.",
+      "property_order": 20
     },
     "HideMobileAccounts": {
       "type": "boolean",
-      "title": "Hide Mobile Accounts",
+      "title": "Hide mobile accounts",
+      "default": false,
       "description": "If true, hides mobile account users in a user list. In some cases, mobile users show up as network users.",
+      "property_order": 25
+    },
+    "IncludeNetworkUser": {
+      "type": "boolean",
+      "title": "Show network users",
+      "default": false,
+      "description": "If true, shows network users in the user list.",
+      "property_order": 30
+    },
+    "HideAdminUsers": {
+      "type": "boolean",
+      "title": "Hide Mac computer's administrator accounts",
+      "default": false,
+      "description": "If true, hides administrator users when showing a user list.",
+      "property_order": 35
+    },
+    "SHOWOTHERUSERS_MANAGED": {
+      "type": "boolean",
+      "title": "Show \"Other\"",
+      "default": false,
+      "description": "If true, displays an \"Other...\" option when showing the user list.",
+      "property_order": 40
+    },
+    "SleepDisabled": {
+      "type": "boolean",
+      "title": "Hide the Sleep button",
+      "default": false,
+      "description": "If true, disables the Sleep button.",
+      "property_order": 45
+    },
+    "RestartDisabled": {
+      "type": "boolean",
+      "title": "Hide the Restart button",
+      "default": false,
+      "description": "If true, disables the Restart item.",
+      "property_order": 50
+    },
+    "ShutDownDisabled": {
+      "type": "boolean",
+      "title": "Hide the Shut Down button",
+      "default": false,
+      "description": "If true, disables the Shut Down button.",
+      "property_order": 55
+    },
+    "PowerOffDisabled": {
+      "type": "boolean",
+      "title": "Hide the Power Off button",
+      "default": false,
+      "description": "If true, disables the Power Off button.",
+      "property_order": 58
+    },
+    "RestartDisabledWhileLoggedIn": {
+      "type": "boolean",
+      "title": "Disable the Restart menu item while logged in",
+      "default": false,
+      "description": "If true, disables the Restart menu item when a user is logged in.",
+      "property_order": 60
+    },
+    "ShutDownDisabledWhileLoggedIn": {
+      "type": "boolean",
+      "title": "Disable the Shut Down menu item while logged in",
+      "default": false,
+      "description": "If true, disables the Shut Down menu item when a user is logged in.",
+      "property_order": 65
+    },
+    "PowerOffDisabledWhileLoggedIn": {
+      "type": "boolean",
+      "title": "Disable the Power Off menu item while logged in",
+      "default": false,
+      "description": "If true, disables the Power Off menu item when a user is logged in.",
       "property_order": 70
     },
-    "AdminHostInfo": {
-      "type": "string",
-      "title": "Show additional information in the menu bar",
-      "description": "Cycle through the hostname, macOS version, and IP address when the menu bar is clicked.",
-      "enum": [
-        "HostName",
-        "SystemVersion",
-        "IPAddress"
-      ],
-      "options": {
-        "enum_titles": [
-          "Hostname",
-          "System Version",
-          "IP Address"
-        ],
-        "property_order": 75
-      },
-      "HideLocalUsers": {
-        "type": "boolean",
-        "title": "Hide Local Users",
-        "description": "If true, shows only network and system users when showing a user list.",
-        "property_order": 80
+    "LogOutDisabledWhileLoggedIn": {
+      "type": "boolean",
+      "title": "Disable the Log Out menu item while logged in",
+      "default": false,
+      "description": "If true, disables the Log Out menu item when a user is logged in. Requires macOS 10.13 or later.",
+      "property_order": 75
+    },
+    "DisableScreenLockImmediate": {
+      "type": "boolean",
+      "title": "Disable the immediate Screen Lock function",
+      "default": false,
+      "description": "If true, disables the immediate Screen Lock functions. Requires macOS 10.13 or later.",
+      "property_order": 80
+    },
+    "showInputMenu": {
+      "type": "boolean",
+      "title": "Show input menu in login window",
+      "default": false,
+      "description": "If true, shows the Input Menu in the Login Window. Requires macOS 10.8 or later.",
+      "property_order": 85
+    },
+    "HiddenUsersList": {
+      "type": "array",
+      "title": "Hidden Users List",
+      "description": "Usernames to hide from the login window user list.",
+      "property_order": 90,
+      "items": {
+        "type": "string",
+        "title": "Username"
       }
-    }
+    },
+    "com.apple.login.mcx.DisableAutoLoginClient": {
+      "type": "boolean",
+      "title": "Disable automatic login if FileVault is disabled",
+      "default": true,
+      "description": "If true, requires a password to log in when FileVault is disabled.",
+      "property_order": 95
+    },
+    "AutologinUsername": {
+      "type": "string",
+      "title": "Auto Login Username",
+      "description": "The user short name for an existing user to set up auto login. Requires macOS 14.0 or later.",
+      "property_order": 100
+    },
+    "AutologinPassword": {
+      "type": "string",
+      "title": "Auto Login Password",
+      "description": "The password for the AutologinUsername user. Must match the user's current password. Requires macOS 14.0 or later.",
+      "property_order": 105
+    },
+    "DisableFDEAutoLogin": {
+      "type": "boolean",
+      "title": "Disable automatic login if FileVault is enabled",
+      "default": false,
+      "description": "If true, disables the automatic login option when FileVault is active. Requires macOS 10.9 or later.",
+      "property_order": 110
+    },
+    "DisableConsoleAccess": {
+      "type": "boolean",
+      "title": "Disable >console login",
+      "default": false,
+      "description": "If true, disregards the >console special user name that provides a command line UI.",
+      "property_order": 115
+    },
+    "EnableExternalAccounts": {
+      "type": "boolean",
+      "title": "Enable external accounts",
+      "default": true,
+      "description": "If true, allows external accounts to log in.",
+      "property_order": 120
+    },
+    "AdminMayDisableMCX": {
+      "type": "boolean",
+      "title": "Mac computer administrators may refresh content or disable management",
+      "default": true,
+      "description": "If true, allows Mac administrators to refresh or disable management features.",
+      "property_order": 125
+    },
+    "TALLogoutSavesState": {
+      "type": "boolean",
+      "title": "Reopen windows when logging back in",
+      "default": true,
+      "description": "If true, reopens windows that were open at the time of logout.",
+      "property_order": 130
+    },
+    "UseComputerNameForComputerRecordName": {
+      "type": "boolean",
+      "title": "Set Mac computer name to computer record name",
+      "default": true,
+      "description": "If true, forces the Mac name to be set as the computer record name.",
+      "property_order": 135
+    },
+    "AllowList": {
+      "type": "array",
+      "title": "Allowed Users or Groups",
+      "description": "List of user or group GUIDs allowed to log in. Applies to network and mobile accounts only. An asterisk (*) specifies all users or groups.",
+      "property_order": 140,
+      "items": {
+        "type": "string",
+        "title": "User or Group GUID",
+        "pattern": "^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$"
+      }
+    },
+    "DenyList": {
+      "type": "array",
+      "title": "Denied Users or Groups",
+      "description": "List of user or group GUIDs denied from logging in. Takes priority over AllowList. Applies to network and mobile accounts only.",
+      "property_order": 145,
+      "items": {
+        "type": "string",
+        "title": "User or Group GUID",
+        "pattern": "^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$"
+      }
+    },
+    "LocalUserLoginEnabled": {
+      "type": "boolean",
+      "title": "Local-only users may log in",
+      "description": "If true, permits only local users to log in. Network users will not be allowed.",
+      "property_order": 150
+    },
+    "LocalUsersHaveWorkgroups": {
+      "type": "boolean",
+      "title": "Local-only users use available workgroup settings",
+      "description": "If true, local users are forced to use any available workgroup settings.",
+      "property_order": 155
+    },
+    "FlattenUserWorkgroups": {
+      "type": "boolean",
+      "title": "Ignore workgroup nesting",
+      "description": "If true and users are part of a nested workgroup, only the settings of the user's direct workgroup are enforced.",
+      "property_order": 160
+    },
+    "CombineUserWorkgroups": {
+      "type": "boolean",
+      "title": "Combine available workgroup settings",
+      "description": "If true and users are part of a nested workgroup, all nested workgroup settings are enforced.",
+      "property_order": 165
+    },
+    "AlwaysShowWorkgroupDialog": {
+      "type": "boolean",
+      "title": "Always show workgroup dialog during log in",
+      "description": "If true and the workgroup has a specific dialog, that dialog is shown at login.",
+      "property_order": 170
+    },
+    "ChangePasswordDisabled": {
+      "type": "boolean",
+      "title": "Disallow user to change password",
+      "description": "If true, disables the Change Password button in Users & Groups.",
+      "property_order": 175
+    },
+    "RetriesUntilHint": {
+      "type": "integer",
+      "title": "Show password hints after failed attempts",
+      "description": "Number of failed attempts before showing a password hint. Set to 0 to disable password hints.",
+      "property_order": 180
+    },
   }
 }
